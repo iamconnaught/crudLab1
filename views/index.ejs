@@ -8,18 +8,12 @@
             <% for(let i = 0; i < cars.length; i++){ %>
                 <li>
                     Make: <a href="/cars/<%=cars[i].id%>"><%=cars[i].make; %></a><br/>
-                    Color:  <%=cars[i].color; %> <br/>
-                    
-                    <% if(cars[i].isConvertible === true){ %>
-                      Your car is Convertible! Top Down!
-                    <% } else { %>
-                      Your car is not Convertible. Just roll down the windows, I guess.
-                    <% } %>
-<!--  -->
-                    <!-- <form action="/cars/<%=cars[i]._id%>?_method=DELETE" method="POST">
+                    Model: <%=cars[i].model; %>
+
+                    <form action="/cars/<%=cars[i]._id%>?_method=DELETE" method="POST">
                       <button type="submit">Delete</button>
                     </form>
-                    <a href="/fruits/<%=cars[i]._id%>/edit">(EDIT)</a> -->
+                    <a href="/cars/<%=cars[i]._id%>/edit">(EDIT)</a>
                 </li>
             <% } %>
         </ul>

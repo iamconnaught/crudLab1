@@ -5,12 +5,12 @@ const Car  = require('../models/cars');
 // index route
 router.get('/', (req, res) => {
 
-  // Telling the model to go ask the db to find all the fruit documents
+
   Car.find({}, (error, allTheCarsFromTheDB) => {
 
     if(error){
       res.send(error);
-      // console.log(error)
+
     } else {
       res.render('index.ejs', {cars: allTheCarsFromTheDB});
     }
@@ -42,6 +42,54 @@ router.post('/', (req, res) => {
     }
   })
 });
+
+// show route 
+router.get('/:id', (req, res) => {
+
+
+  Car.findOne({_id: req.params.id}, (err, foundCar) => {
+      if(err){
+        res.send(err);
+      } else {
+          console.log(typeof foundCar, 'foundCar');
+          if(foundCar != null){
+
+              res.render('show.ejs', {
+                car: foundCar 
+              });
+
+          } else {
+            res.send('no Car found')
+          }
+
+
+      }
+  });
+
+
+});
+
+// delete route
+router.delete('/:id', (req, res) => {
+  Car.findByIdAndRemove(req.params.id, (err, deletedCar)=>{
+    if(err){
+      res.send(err)
+    } else {
+      console.log(deletedCar);
+      res.redirect('/cars');
+    }
+  })
+
+
+
+
+});
+
+
+
+
+
+
 
 
 
