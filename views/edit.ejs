@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <h1>Edit Car Page</h1>
+  <form action="/cars/<%=id%>?_method=PUT" method="POST">
+    Make: <input type="text" name="make" value="<%=car.make%>"/><br/>
+    Model: <input type="text" name="model" value="<%=car.model%>"/><br/>
+    Color: <input type="text" name="color" value="<%=car.color%>"/><br/>
+    Is Convertible:
+    <input type="checkbox" name="isConvertible"
+      <% if(car.isConvertible === true){%>
+        checked
+      <%}%>
+    /><br/>
+
+
+    <button type="submit">Edit Car</button>
+
+  </form>
+
+</body>
+</html>

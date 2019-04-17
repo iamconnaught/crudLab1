@@ -79,13 +79,25 @@ router.delete('/:id', (req, res) => {
       res.redirect('/cars');
     }
   })
-
-
-
-
 });
 
 
+// edit route
+router.get('/:id/edit', (req, res) => {
+  // find
+  Car.findByIdAndUpdate(req.params.id, (err, updatedCar)=>{
+    if(err){
+      res.send(err)
+    } else {
+      console.log(updatedCar);
+      res.render('edit.ejs',{
+      	car: updatedCar});
+    }
+  })
+    
+  
+  
+})
 
 
 
