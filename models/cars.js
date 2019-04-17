@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 
 const carSchema = new mongoose.Schema({
-	make: { type: String, required: true},
-	model: { type: String, required: true, unique: true},
+	make: { type: String},
+	model: { type: String},
 	color: String,
 	isConvertible: Boolean,
 	

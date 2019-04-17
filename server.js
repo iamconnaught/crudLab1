@@ -3,10 +3,12 @@ const app            = express();
 const bodyParser     = require('body-parser');
 const methodOverride = require('method-override')
 
-// require('./db/db');
+require('./db/db');
 
 
 const carController = require('./controllers/carController');
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(methodOverride('_method'))
 
 app.use('/cars', carController);
 
